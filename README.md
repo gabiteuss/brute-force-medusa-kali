@@ -261,18 +261,20 @@ ftp> pwd    # /home/msfadmin
 
 ## 📸 Capturas de tela
 
-As evidências visuais ficam na pasta `/images`:
+As evidências visuais do laboratório ficam na pasta [`images/`](images/), na ordem lógica da cadeia de ataque:
 
-<!-- Substitua os caminhos abaixo pelos seus prints -->
-<!--
-| Etapa | Print |
-| --- | --- |
-| Varredura com Nmap | ![Nmap](images/01-nmap.png) |
-| Credencial encontrada (Medusa) | ![Medusa](images/02-medusa.png) |
-| Acesso ao share (smbclient) | ![smbclient](images/03-smbclient.png) |
--->
+| # | Etapa | Print |
+| --- | --- | --- |
+| 1 | Varredura de rede com Nmap (hosts ativos) | ![Varredura Nmap](images/01-nmap-varredura.jpeg) |
+| 2 | Password spraying no SMB com Medusa — `ACCOUNT FOUND` | ![Medusa SMB](images/02-medusa-spray-smb.jpeg) |
+| 3 | Força bruta no FTP com Medusa e login bem-sucedido | ![Medusa FTP](images/03-medusa-ftp-acesso.jpeg) |
+| 4 | Listagem dos shares SMB (`smbclient -L`) | ![Shares SMB](images/04-smbclient-lista-shares.jpeg) |
+| 5 | Acesso de verdade ao share `tmp` | ![Acesso ao share](images/05-smbclient-acesso-share-tmp.jpeg) |
+| 6 | Autenticação ≠ autorização — `NT_STATUS_ACCESS_DENIED` | ![Access denied](images/06-smbclient-access-denied.jpeg) |
+| 7 | Download autorizado do `.profile` | ![Download profile](images/07-smbclient-download-profile.jpeg) |
+| 8 | Evidência `.sudo_as_admin_successful` | ![sudo as admin](images/08-smbclient-sudo-as-admin.png) |
 
-> 💡 **Dica:** crie uma pasta `images/` no repositório e coloque aqui os prints de cada etapa (varredura, `ACCOUNT FOUND` da Medusa, o prompt `smb: \>` baixando arquivos). Depois, descomente a tabela acima e ajuste os nomes dos arquivos.
+> 💡 Os prints são capturas reais das etapas descritas acima, feitas no laboratório isolado (Kali → Metasploitable 2, rede Host-Only).
 
 ---
 
